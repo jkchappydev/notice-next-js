@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma"; // DB 연결 인스턴스 import
+import Link from "next/link";
 
 // 공지 목록 페이지 컴포넌트
 export default async function NoticePage() {
@@ -13,7 +14,9 @@ export default async function NoticePage() {
     return (
         <ul>
             {notices.map((notice) => (
-                <li key={notice.id}>{notice.title}</li>
+                <li key={notice.id}>
+                    <Link href={`/notices/${notice.id}`}>{notice.title}</Link>
+                </li>
             ))}
         </ul>
     );
