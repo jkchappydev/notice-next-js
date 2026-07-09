@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";  // DB 연결 인스턴스 import
-import { notFound } from "next/navigation"; // 404 처리용 함수 import
+import { notFound } from "next/navigation";
+import Link from "next/link"; // 404 처리용 함수 import
 
 // URL 파라미터 타입
 type PageProps = {
@@ -9,8 +10,7 @@ type PageProps = {
 }
 
 // 공지 상세 페이지 컴포넌트
-
-export default async function NoticeDetailPage({params}:PageProps) {
+export default async function NoticeDetailPage({ params }:PageProps) {
     // URL의 id 값을 숫자로 변환
     const { id } = await params;
     const noticeId = Number(id);
@@ -32,6 +32,7 @@ export default async function NoticeDetailPage({params}:PageProps) {
         <article>
             <h1>{notice.title}</h1>
             <p>{notice.content}</p>
+            <Link href={`/notices/${notice.id}/edit`}>수정</Link>
         </article>
     )
 }
