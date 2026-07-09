@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";  // DB 연결 인스턴스 import
-import { notFound } from "next/navigation";
-import Link from "next/link"; // 404 처리용 함수 import
+import {notFound, redirect} from "next/navigation";
+import Link from "next/link";
+import {DeleteButton} from "@/app/notices/[id]/DeleteButton";
 
 // URL 파라미터 타입
 type PageProps = {
@@ -33,6 +34,22 @@ export default async function NoticeDetailPage({ params }:PageProps) {
             <h1>{notice.title}</h1>
             <p>{notice.content}</p>
             <Link href={`/notices/${notice.id}/edit`}>수정</Link>
+            <form action={deleteNotice}>
+                <input type="hidden" name="id" value={notice.id}/>
+                <DeleteButton></DeleteButton>
+            </form>
         </article>
     )
+}
+
+async function deleteNotice(formData: FormData) {
+    "use server";
+
+    const id = Number(formData.get("id"));
+
+    await prisma.notice.delete({
+        where: {id}
+    });
+
+    redirect(`/notices`);
 }
