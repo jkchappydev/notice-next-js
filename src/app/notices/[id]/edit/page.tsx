@@ -39,8 +39,10 @@ export default async function NoticeEditPage({params}: PageProps) {
                 rows={8}
                 className="w-full border rounded px-3 py-2"
             />
-            <SubmitButton label={`수정 완료`}></SubmitButton>
-            <CancelButton href={`/notices/${notice.id}`} label={`취소`}></CancelButton>
+            <div className="flex gap-2">
+                <SubmitButton label={`수정`} message={`수정하시겠어요?`}></SubmitButton>
+                <CancelButton href={`/notices/${notice.id}`} label={`취소`} message={`취소하시겠어요?`}></CancelButton>
+            </div>
         </form>
     )
 }

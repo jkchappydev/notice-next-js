@@ -52,7 +52,7 @@ export default async function NoticeDetailPage({params}:PageProps) {
                 <LinkButton href={`/notices/${notice.id}/edit`} label={`수정하기`}></LinkButton>
                 <form action={deleteNotice}>
                     <input type="hidden" name="id" value={notice.id}/>
-                    <DeleteButton></DeleteButton>
+                    <DeleteButton label={`삭제`} message={`정말 삭제하시겠어요?`}></DeleteButton>
                 </form>
             </div>
         </article>
