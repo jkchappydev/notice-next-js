@@ -13,7 +13,8 @@ export default async function NoticePage() {
 
     // 조회한 목록을 리스트로 렌더링
     return (
-        <div className="max-w-2xl mx-auto p-4 space-y-2">
+        <div className="space-y-2">
+            <h1 className="text-xl font-bold mb-4">공지사항</h1>
             <ul className="space-y-2">
                 <div className="flex justify-end">
                     <LinkButton href={`/notices/new`} label={`글쓰기`}></LinkButton>

@@ -5,27 +5,30 @@ import {SubmitButton} from "@/components/SubmitButton";
 
 export default function NoticeNewPage() {
     return (
-        <form action={createNotice} className="max-w-2xl mx-auto p-4 space-y-4">
-            <input
-                type="text"
-                name="title"
-                placeholder="제목"
-                required
-                maxLength={20}
-                className="w-full border rounded px-3 py-2"
-            />
-            <textarea
-                name="content"
-                placeholder="내용"
-                rows={8}
-                required
-                className="w-full border rounded px-3 py-2"
-            />
-            <div className="flex gap-2">
-                <SubmitButton label={`등록`} message={`등록하시겠어요?`}></SubmitButton>
-                <CancelButton href={`/notices`} label={`취소`} message={`취소하시겠어요?`}></CancelButton>
-            </div>
-        </form>
+        <div className="space-y-4">
+            <h1 className="text-xl font-bold mb-4">공지사항 등록</h1>
+            <form action={createNotice} className="space-y-4">
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="제목"
+                    required
+                    maxLength={20}
+                    className="w-full border rounded px-3 py-2"
+                />
+                <textarea
+                    name="content"
+                    placeholder="내용"
+                    rows={8}
+                    required
+                    className="w-full border rounded px-3 py-2"
+                />
+                <div className="flex gap-2">
+                    <SubmitButton label={`등록`} message={`등록하시겠어요?`}></SubmitButton>
+                    <CancelButton href={`/notices`} label={`취소`} message={`취소하시겠어요?`}></CancelButton>
+                </div>
+            </form>
+        </div>
     );
 }
 

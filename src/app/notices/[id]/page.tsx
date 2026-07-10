@@ -44,16 +44,18 @@ export default async function NoticeDetailPage({params}:PageProps) {
 
     // 조회한 공지사항을 화면에 출력
     return (
-        <article className="max-w-2xl mx-auto p-4">
-            <BackLinkButton href={`/notices`} label={`← 목록으로`}></BackLinkButton>
+        <article>
             <h1 className="text-2xl font-bold mb-4">{notice.title}</h1>
             <p className="whitespace-pre-wrap mb-6">{notice.content}</p>
-            <div className="flex gap-4">
-                <LinkButton href={`/notices/${notice.id}/edit`} label={`수정하기`}></LinkButton>
-                <form action={deleteNotice}>
-                    <input type="hidden" name="id" value={notice.id}/>
-                    <DeleteButton label={`삭제`} message={`정말 삭제하시겠어요?`}></DeleteButton>
-                </form>
+            <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                    <LinkButton href={`/notices/${notice.id}/edit`} label={`수정하기`}></LinkButton>
+                    <form action={deleteNotice}>
+                        <input type="hidden" name="id" value={notice.id}/>
+                        <DeleteButton label={`삭제`} message={`정말 삭제하시겠어요?`}></DeleteButton>
+                    </form>
+                </div>
+                <BackLinkButton href={`/notices`} label={`← 목록으로`}></BackLinkButton>
             </div>
         </article>
     )
