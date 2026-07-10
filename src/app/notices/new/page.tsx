@@ -20,7 +20,7 @@ export default function NoticeNewPage() {
             />
             <div className="flex gap-2">
                 <SubmitButton label={`작성 완료`}></SubmitButton>
-                <CancelButton href={`/notices`}></CancelButton>
+                <CancelButton href={`/notices`} label={`취소`}></CancelButton>
             </div>
         </form>
     );

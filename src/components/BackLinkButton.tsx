@@ -1,13 +1,14 @@
 import Link from "next/link";
 
 type BackLinkProps = {
-    href: string
+    href: string,
+    label: string
 }
 
-export function BackLink({href}: BackLinkProps) {
+export function BackLinkButton({href, label}: BackLinkProps) {
     return (
         <Link href={href} className="text-sm text-gray-500 hover:underline">
-            ← 목록으로
+            {label}
         </Link>
     );
 }

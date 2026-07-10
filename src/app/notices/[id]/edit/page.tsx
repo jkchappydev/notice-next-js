@@ -40,7 +40,7 @@ export default async function NoticeEditPage({params}: PageProps) {
                 className="w-full border rounded px-3 py-2"
             />
             <SubmitButton label={`수정 완료`}></SubmitButton>
-            <CancelButton href={`/notices/${notice.id}`}></CancelButton>
+            <CancelButton href={`/notices/${notice.id}`} label={`취소`}></CancelButton>
         </form>
     )
 }
