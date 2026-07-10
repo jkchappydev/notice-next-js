@@ -12,14 +12,25 @@ export default async function NoticePage() {
 
     // 조회한 목록을 리스트로 렌더링
     return (
-        <ul className="max-w-2xl mx-auto p-4 space-y-2">
-            {notices.map((notice) => (
-                <li key={notice.id} className="border-b py-2">
-                    <Link href={`/notices/${notice.id}`} className="hover:underline">
-                        {notice.title}
+        <div className="max-w-2xl mx-auto p-4 space-y-2">
+            <ul className="space-y-2">
+                <div className="flex justify-end">
+                    <Link
+                        href="/notices/new"
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                        작성
                     </Link>
-                </li>
-            ))}
-        </ul>
+                </div>
+
+                {notices.map((notice) => (
+                    <li key={notice.id} className="border-b py-2">
+                        <Link href={`/notices/${notice.id}`} className="hover:underline">
+                            {notice.title}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
