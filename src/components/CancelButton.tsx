@@ -12,7 +12,7 @@ export function CancelButton({href, label, message}:CancelButtonProps) {
     return (
         <Link
             href={href}
-            className="px-4 py-2 rounded border text-gray-600 hover:bg-gray-50"
+            className="px-4 text-gray-600 hover:underline"
             onClick={(e) => {
                 if (!confirm(message)) {
                     e.preventDefault();

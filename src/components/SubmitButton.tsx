@@ -9,7 +9,7 @@ export function SubmitButton({label, message}:SubmitButtonProps) {
     return (
         <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="text-blue-600 hover:underline cursor-pointer"
             onClick={(e) => {
                 if (!confirm(message)) {
                     e.preventDefault();

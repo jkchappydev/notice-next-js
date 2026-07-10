@@ -9,7 +9,7 @@ export function DeleteButton({label, message}: DeleteButtonProps) {
     return (
         <button
             type="submit"
-            className="text-red-600 hover:underline"
+            className="text-red-600 hover:underline cursor-pointer"
             onClick={(e) => {
                 if (!confirm(message)) {
                     e.preventDefault();

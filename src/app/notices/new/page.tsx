@@ -23,7 +23,7 @@ export default function NoticeNewPage() {
                     required
                     className="w-full border rounded px-3 py-2"
                 />
-                <div className="flex gap-2">
+                <div>
                     <SubmitButton label={`등록`} message={`등록하시겠어요?`}></SubmitButton>
                     <CancelButton href={`/notices`} label={`취소`} message={`취소하시겠어요?`}></CancelButton>
                 </div>
