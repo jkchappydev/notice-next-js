@@ -1,6 +1,7 @@
 import "./globals.css";
 import {Header} from "@/components/Header";
 import {Sidebar} from "@/components/Sidebar";
+import {Footer} from "@/components/Footer";
 
 export default function RootLayout({
                                      children,
@@ -10,11 +11,14 @@ export default function RootLayout({
     return (
         <html lang="ko">
 
-        <body className="min-h-full">
-            <Header/>
-            <div className="max-w-4xl mx-auto px-6 pb-12 flex gap-8">
-                <Sidebar/>
-                <main className="flex-1 pt-6">{children}</main>
+        <body>
+            <div className="h-screen max-w-4xl mx-auto flex flex-col">
+                <Header/>
+                <div className="flex-1 overflow-y-auto flex gap-8 px-6">
+                    <Sidebar/>
+                    <main className="flex-1 pt-6 pb-12">{children}</main>
+                </div>
+                <Footer/>
             </div>
         </body>
 
