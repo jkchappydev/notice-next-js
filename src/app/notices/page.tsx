@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"; // DB 연결 인스턴스 import
 import Link from "next/link";
 import {LinkButton} from "@/components/LinkButton";
+import {formatDate} from "@/lib/formatDate";
 
 // 공지 목록 페이지 컴포넌트
 export default async function NoticePage() {
@@ -20,10 +21,13 @@ export default async function NoticePage() {
             </div>
             <ul className="space-y-2">
                 {notices.map((notice) => (
-                    <li key={notice.id} className="border-b py-2">
+                    <li key={notice.id} className="border-b py-2 flex justify-between items-center">
                         <Link href={`/notices/${notice.id}`} className="hover:underline">
                             {notice.title}
                         </Link>
+                        <span className="text-sm text-gray-500">
+                            {formatDate(notice.createdAt)}
+                        </span>
                     </li>
                 ))}
             </ul>
