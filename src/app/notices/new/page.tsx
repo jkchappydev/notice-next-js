@@ -10,12 +10,15 @@ export default function NoticeNewPage() {
                 type="text"
                 name="title"
                 placeholder="제목"
+                required
+                maxLength={20}
                 className="w-full border rounded px-3 py-2"
             />
             <textarea
                 name="content"
                 placeholder="내용"
                 rows={8}
+                required
                 className="w-full border rounded px-3 py-2"
             />
             <div className="flex gap-2">
@@ -31,6 +34,14 @@ async function createNotice(formData: FormData) {
 
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
+
+    if (!title.trim() || !content.trim()) {
+        throw new Error("제목과 내용을 입력해주세요.");
+    }
+
+    if (title.length > 20) {
+        throw new Error("제목은 20자 이내로 입력해주세요.");
+    }
 
     const notice = await prisma.notice.create({
         data: {title, content}

@@ -31,12 +31,15 @@ export default async function NoticeEditPage({params}: PageProps) {
                 type="text"
                 name="title"
                 defaultValue={notice.title}
+                required
+                maxLength={20}
                 className="w-full border rounded px-3 py-2"
             />
             <textarea
                 name="content"
                 defaultValue={notice.content}
                 rows={8}
+                required
                 className="w-full border rounded px-3 py-2"
             />
             <div className="flex gap-2">
@@ -53,6 +56,14 @@ async function updateNotice(formData: FormData) {
     const id = Number(formData.get("id"));
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
+
+    if (!title.trim() || !content.trim()) {
+        throw new Error("제목과 내용을 입력해주세요.");
+    }
+
+    if (title.length > 20) {
+        throw new Error("제목은 20자 이내로 입력해주세요.");
+    }
 
     await prisma.notice.update({
         where: {id},
