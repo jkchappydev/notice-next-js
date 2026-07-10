@@ -12,10 +12,12 @@ export default async function NoticePage() {
 
     // 조회한 목록을 리스트로 렌더링
     return (
-        <ul>
+        <ul className="max-w-2xl mx-auto p-4 space-y-2">
             {notices.map((notice) => (
-                <li key={notice.id}>
-                    <Link href={`/notices/${notice.id}`}>{notice.title}</Link>
+                <li key={notice.id} className="border-b py-2">
+                    <Link href={`/notices/${notice.id}`} className="hover:underline">
+                        {notice.title}
+                    </Link>
                 </li>
             ))}
         </ul>

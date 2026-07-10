@@ -11,10 +11,23 @@ type PageProps = {
 }
 
 // 공지 상세 페이지 컴포넌트
-export default async function NoticeDetailPage({ params }:PageProps) {
+export default async function NoticeDetailPage({params}:PageProps) {
     // URL의 id 값을 숫자로 변환
-    const { id } = await params;
+    // 매개변수가 {params}:PageProps
+    // 1.
+    // const resolveParam = await params;
+    // const noticeId = Number(resolveParam.id);
+    // 2.
+    const {id} = await params;
     const noticeId = Number(id);
+
+    // 매개변수가 props:PageProps
+    // 1.
+    // const resolveParam = await props.params;
+    // const noticeId = Number(resolveParam.id);
+    // 2.
+    // const {id} = await props.params;
+    // const noticeId = Number(id);
 
     // id에 해당하는 공지사항 단건 조회
     const notice = await prisma.notice.findUnique({
@@ -30,14 +43,19 @@ export default async function NoticeDetailPage({ params }:PageProps) {
 
     // 조회한 공지사항을 화면에 출력
     return (
-        <article>
-            <h1>{notice.title}</h1>
-            <p>{notice.content}</p>
-            <Link href={`/notices/${notice.id}/edit`}>수정</Link>
-            <form action={deleteNotice}>
-                <input type="hidden" name="id" value={notice.id}/>
-                <DeleteButton></DeleteButton>
-            </form>
+        <article className="max-w-2xl mx-auto p-4">
+            <Link href={`/notices`} className="text-sm text-gray-500 hover:underline">
+                ← 목록으로
+            </Link>
+            <h1 className="text-2xl font-bold mb-4">{notice.title}</h1>
+            <p className="whitespace-pre-wrap mb-6">{notice.content}</p>
+            <div className="flex gap-4">
+                <Link href={`/notices/${notice.id}/edit`} className="text-blue-600 hover:underline">수정</Link>
+                <form action={deleteNotice}>
+                    <input type="hidden" name="id" value={notice.id}/>
+                    <DeleteButton></DeleteButton>
+                </form>
+            </div>
         </article>
     )
 }

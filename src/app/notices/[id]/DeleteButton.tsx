@@ -4,6 +4,7 @@ export function DeleteButton() {
     return (
         <button
             type="submit"
+            className="text-red-600 hover:underline"
             onClick={(e) => {
                 if (!confirm("정말 삭제하시겠어요?")) {
                     e.preventDefault();
