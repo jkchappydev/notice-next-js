@@ -1,6 +1,7 @@
-import { prisma } from "@/lib/prisma";
+import {prisma} from "@/lib/prisma";
 import {notFound, redirect} from "next/navigation";
-import Link from "next/link";
+import {CancelButton} from "@/components/CancelButton";
+import {SubmitButton} from "@/components/SubmitButton";
 
 // URL 파라미터 타입 — params는 나중에 값이 채워지는 Promise라 await로 꺼내서 씀
 type PageProps = {
@@ -38,15 +39,8 @@ export default async function NoticeEditPage({params}: PageProps) {
                 rows={8}
                 className="w-full border rounded px-3 py-2"
             />
-            <button
-                type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-                수정 완료
-            </button>
-            <Link href={`/notices/${notice.id}`} className="px-4 py-2 rounded border text-gray-600 hover:bg-gray-50">
-                취소
-            </Link>
+            <SubmitButton label={`수정 완료`}></SubmitButton>
+            <CancelButton href={`/notices/${notice.id}`}></CancelButton>
         </form>
     )
 }

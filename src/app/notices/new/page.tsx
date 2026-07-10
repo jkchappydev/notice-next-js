@@ -1,6 +1,7 @@
 import {prisma} from "@/lib/prisma";
-import Link from "next/link";
 import {redirect} from "next/navigation";
+import {CancelButton} from "@/components/CancelButton";
+import {SubmitButton} from "@/components/SubmitButton";
 
 export default function NoticeNewPage() {
     return (
@@ -18,20 +19,9 @@ export default function NoticeNewPage() {
                 className="w-full border rounded px-3 py-2"
             />
             <div className="flex gap-2">
-                <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                    작성 완료
-                </button>
-                <Link
-                    href="/notices"
-                    className="px-4 py-2 rounded border text-gray-600 hover:bg-gray-50"
-                >
-                    취소
-                </Link>
+                <SubmitButton label={`작성 완료`}></SubmitButton>
+                <CancelButton href={`/notices`}></CancelButton>
             </div>
-
         </form>
     );
 }

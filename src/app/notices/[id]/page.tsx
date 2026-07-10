@@ -1,7 +1,8 @@
-import { prisma } from "@/lib/prisma";  // DB 연결 인스턴스 import
+import {prisma} from "@/lib/prisma"; // DB 연결 인스턴스 import
 import {notFound, redirect} from "next/navigation";
-import Link from "next/link";
-import {DeleteButton} from "@/app/notices/[id]/DeleteButton";
+import {DeleteButton} from "@/components/DeleteButton";
+import {EditLink} from "@/components/EditLink";
+import {BackLink} from "@/components/BackLink";
 
 // URL 파라미터 타입
 type PageProps = {
@@ -44,13 +45,11 @@ export default async function NoticeDetailPage({params}:PageProps) {
     // 조회한 공지사항을 화면에 출력
     return (
         <article className="max-w-2xl mx-auto p-4">
-            <Link href={`/notices`} className="text-sm text-gray-500 hover:underline">
-                ← 목록으로
-            </Link>
+            <BackLink href={`/notices`}></BackLink>
             <h1 className="text-2xl font-bold mb-4">{notice.title}</h1>
             <p className="whitespace-pre-wrap mb-6">{notice.content}</p>
             <div className="flex gap-4">
-                <Link href={`/notices/${notice.id}/edit`} className="text-blue-600 hover:underline">수정</Link>
+                <EditLink href={`/notices/${notice.id}/edit`}></EditLink>
                 <form action={deleteNotice}>
                     <input type="hidden" name="id" value={notice.id}/>
                     <DeleteButton></DeleteButton>
