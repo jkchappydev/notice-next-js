@@ -1,4 +1,12 @@
 ## 작업 방식
+- 이 프로젝트에서는 superpowers 플러그인을 사용하지 않는다.  
+  brainstorming/writing-plans/TDD/subagent-driven-development 등
+  superpowers의 스킬을 자동으로 호출하지 않는다.
+  ```
+  /plugin disable superpowers --scope local
+  ```
+  명령으로 이미 비활성화 설정됨.  
+  (다른 컴퓨터에서 이 프로젝트를 열 경우, local scope 설정은 공유되지 않으므로 동일 명령을 다시 실행할 것)
 - 새로운 대화 세션이 열리면, 작업 시작 전에 PROGRESS.md를 확인한다.
 - PROGRESS.md는 진행상황을 계속 누적시키는 로그가 아니라 컴퓨터 간 작업 인계용 스냅샷이다. 항목이 끝나면 그 내용을 PROGRESS.md에서 제거한다.
 - PROGRESS.md는 "## 완료된 작업", "## 다음 진행 예정" 두 섹션 구조를 유지한다.
