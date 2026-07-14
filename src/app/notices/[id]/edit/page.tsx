@@ -2,6 +2,7 @@ import {prisma} from "@/lib/prisma";
 import {notFound, redirect} from "next/navigation";
 import {CancelButton} from "@/components/CancelButton";
 import {SubmitButton} from "@/components/SubmitButton";
+import {TitleInput} from "@/components/TitleInput";
 
 // URL 파라미터 타입 — params는 나중에 값이 채워지는 Promise라 await로 꺼내서 씀
 type PageProps = {
@@ -29,14 +30,7 @@ export default async function NoticeEditPage({params}: PageProps) {
             <h1 className="text-xl font-bold mb-4">공지사항 수정</h1>
             <form action={updateNotice} className="space-y-4">
                 <input type="hidden" name="id" value={notice.id}/>
-                <input
-                    type="text"
-                    name="title"
-                    defaultValue={notice.title}
-                    required
-                    maxLength={20}
-                    className="w-full border rounded px-3 py-2"
-                />
+                <TitleInput defaultValue={notice.title}></TitleInput>
                 <textarea
                     name="content"
                     defaultValue={notice.content}
