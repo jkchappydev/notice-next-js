@@ -1,7 +1,6 @@
-import { prisma } from "@/lib/prisma"; // DB 연결 인스턴스 import
-import Link from "next/link";
+import {prisma} from "@/lib/prisma"; // DB 연결 인스턴스 import
 import {LinkButton} from "@/components/LinkButton";
-import {formatDate} from "@/lib/formatDate";
+import {NoticeList} from "@/components/NoticeList";
 
 // 공지 목록 페이지 컴포넌트
 export default async function NoticePage() {
@@ -12,25 +11,14 @@ export default async function NoticePage() {
         }
     });
 
-    // 조회한 목록을 리스트로 렌더링
+    // 조회한 목록을 리스트로 렌더링, 조회 결과가 notices 에 담김
     return (
         <div className="space-y-2">
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-xl font-bold">공지사항</h1>
                 <LinkButton href={`/notices/new`} label={`글쓰기`}></LinkButton>
             </div>
-            <ul className="space-y-2">
-                {notices.map((notice) => (
-                    <li key={notice.id} className="border-b py-2 flex justify-between items-center">
-                        <Link href={`/notices/${notice.id}`} className="hover:underline">
-                            {notice.title}
-                        </Link>
-                        <span className="text-sm text-gray-500">
-                            {formatDate(notice.createdAt)}
-                        </span>
-                    </li>
-                ))}
-            </ul>
+            <NoticeList notices={notices}></NoticeList>
         </div>
     );
 }
